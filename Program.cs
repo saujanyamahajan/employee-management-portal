@@ -2,6 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using EmployeeManagement.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+// Register EF Core + SQL Server
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 
