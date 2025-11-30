@@ -17,6 +17,11 @@ using EmployeeManagement.API.Models;
         {
             _context=context;
         }
-
+        [HttpGet]
+        public IActionResult GetEmployee()
+        {
+            return Ok(_context.Employees.ToList());
+        }
+       
     }
 }
