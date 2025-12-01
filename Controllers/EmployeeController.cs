@@ -22,6 +22,10 @@ using EmployeeManagement.API.Models;
         {
             return Ok(_context.Employees.ToList());
         }
-       
+        [HttpPost]
+        public IActionResult AddEmployee(Employee employee)
+        {
+         
+        }
     }
 }
