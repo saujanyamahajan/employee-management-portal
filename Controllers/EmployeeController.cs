@@ -25,7 +25,9 @@ using EmployeeManagement.API.Models;
         [HttpPost]
         public IActionResult AddEmployee(Employee employee)
         {
-         
+            _context.Employees.Add(employee);
+            _context.SaveChanges();
+            return Ok(employee);
         }
     }
 }
