@@ -33,13 +33,15 @@ namespace EmployeeManagement.API.Controllers
             }
             return Ok(employee);
         }
-        [HttpPost]
+       [HttpPost]
         public IActionResult Create(Employee employee)
         {
             _repository.Add(employee);
             _repository.Save();
+
             return Ok(employee);
         }
+
         [HttpPut]
         public IActionResult Update(Employee employee)
         {
