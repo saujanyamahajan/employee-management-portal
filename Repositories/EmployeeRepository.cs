@@ -7,17 +7,17 @@ namespace EmployeeManagement.API.Repositories
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-            private readonly AppDbContext _context;
+        private readonly AppDbContext _context;
         public EmployeeRepository(AppDbContext context)
         {
-            _context=context;
+            _context = context;
         }
-        
+
         public IEnumerable<Employee> GetAll()
         {
             return _context.Employees.ToList();
         }
-         public Employee GetById(int id)
+        public Employee GetById(int id)
         {
             return _context.Employees.Find(id);
         }
@@ -32,9 +32,9 @@ namespace EmployeeManagement.API.Repositories
             if (employee != null)
             {
                 _context.Employees.Remove(employee);
-            }        
+            }
         }
-       
+
         public void Save()
         {
             _context.SaveChanges();

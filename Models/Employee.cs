@@ -2,7 +2,7 @@ namespace EmployeeManagement.API.Models
 {
     public class Employee
     {
-        public int EmployeeId {get; set;}
+        public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -11,6 +11,6 @@ namespace EmployeeManagement.API.Models
         public string Designation { get; set; }
         public DateTime DateOfJoining { get; set; }
         public bool IsActive { get; set; }
-        
+
     }
 }

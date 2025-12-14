@@ -14,9 +14,9 @@ namespace EmployeeManagement.API.Controllers
         private readonly IEmployeeRepository _repository;
 
         //dependency injection
-        public  EmployeeController(IEmployeeRepository repository)
+        public EmployeeController(IEmployeeRepository repository)
         {
-            _repository=repository;
+            _repository = repository;
         }
         [HttpGet]
         public IActionResult GetAll()
@@ -26,8 +26,8 @@ namespace EmployeeManagement.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetEmployeeById(int id)
         {
-            var employee=_repository.GetById(id);
-            if(employee==null)
+            var employee = _repository.GetById(id);
+            if (employee == null)
             {
                 return NotFound("Employee not found");
             }
@@ -40,5 +40,12 @@ namespace EmployeeManagement.API.Controllers
             _repository.Save();
             return Ok(employee);
         }
+        [HttpPut]
+    public IActionResult Update(Employee employee)
+    {
+        _repository.Update(employee);
+        _repository.Save();
+        return Ok(employee);
+    }
     }
 }
