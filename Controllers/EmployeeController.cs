@@ -1,32 +1,33 @@
-using Microsoft.EntityFrameworkCore;
+// using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using EmployeeManagement.API.Data;
 using EmployeeManagement.API.Models;
+using EmployeeManagement.API.Repositories.Interfaces;
 
 
- namespace EmployeeManagement.API.Controllers
+namespace EmployeeManagement.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class EmployeeController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IEmployeeRepository _repository;
 
         //dependency injection
-        public  EmployeeController(AppDbContext context)
+        public  EmployeeController(IEmployeeRepository repository)
         {
-            _context=context;
+            _repository=repository;
         }
         [HttpGet]
-        public IActionResult GetEmployee()
+        public IActionResult GetAll()
         {
-            return Ok(_context.Employees.ToList());
+            return Ok(_repository.GetAll());
         }
         [HttpPost]
-        public IActionResult AddEmployee(Employee employee)
+        public IActionResult Create(Employee employee)
         {
-            _context.Employees.Add(employee);
-            _context.SaveChanges();
+            _repository.Add(employee);
+            _repository.Save();
             return Ok(employee);
         }
     }
