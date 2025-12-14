@@ -45,5 +45,9 @@ namespace EmployeeManagement.API.Repositories
             _context.Employees.Add(employee);
         }
 
+        object IEmployeeRepository.GetById(int id)
+        {
+            return GetById(id);
+        }
     }
 }

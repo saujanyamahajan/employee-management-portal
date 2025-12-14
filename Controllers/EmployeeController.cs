@@ -1,6 +1,6 @@
 // using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using EmployeeManagement.API.Data;
+// using EmployeeManagement.API.Data;
 using EmployeeManagement.API.Models;
 using EmployeeManagement.API.Repositories.Interfaces;
 
@@ -22,6 +22,16 @@ namespace EmployeeManagement.API.Controllers
         public IActionResult GetAll()
         {
             return Ok(_repository.GetAll());
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetEmployeeById(int id)
+        {
+            var employee=_repository.GetById(id);
+            if(employee==null)
+            {
+                return NotFound("Employee not found");
+            }
+            return Ok(employee);
         }
         [HttpPost]
         public IActionResult Create(Employee employee)

@@ -10,5 +10,6 @@ namespace EmployeeManagement.API.Repositories.Interfaces
         void Update(Employee employee);
         void Delete(int id);
         void Save();
+        object GetById(int id);
     }
 }
