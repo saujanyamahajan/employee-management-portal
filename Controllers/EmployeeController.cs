@@ -41,11 +41,19 @@ namespace EmployeeManagement.API.Controllers
             return Ok(employee);
         }
         [HttpPut]
-    public IActionResult Update(Employee employee)
-    {
-        _repository.Update(employee);
-        _repository.Save();
-        return Ok(employee);
-    }
+        public IActionResult Update(Employee employee)
+        {
+            _repository.Update(employee);
+            _repository.Save();
+            return Ok(employee);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _repository.Delete(id);
+            _repository.Save();
+            return NoContent();
+        }
     }
 }
